@@ -43,4 +43,18 @@ const generateSVG = ({ text, textColor, shape, shapeColor}) => {
             shapeElement = `<rext x="75" y="50" width="150" height="150" fill="${shapeColor}" />`;
             break;
     }
+    const textElement = `<text x="150" y="125" font-size="60" text-anchor="middle" fill="${textColor}">${text}<text>`;
+
+    return `${svgStart}${shapeElement}${textElement}${svgEnd}`;
 };
+
+inquirer.prompt(questions).then(answers => {
+    const svgContent = generateSVG(answers);
+    fs.writeFile('logo.svg', svgContent, err => {
+        if (err) {
+            console.error('Error writng your file:', err);
+        } else {
+            console.log('Successfully generated logo.svg!');
+        }
+    }); 
+});
