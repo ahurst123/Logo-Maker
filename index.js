@@ -1,6 +1,5 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-const { kMaxLength } = require('buffer');
 
 inquirer
     .prompt([
@@ -26,4 +25,10 @@ inquirer
             name: 'shapeColor',
             message: 'Enter the shape color with either the color name or hexidecimal code:',
         }
-    ])
+    ]);
+
+const generateSVG = ({ text, textColor, shape, shapeColor}) => {
+    const svgStart = `<svg width="300" height="200" xmlns="http://www.w3.org/2000/svg">`;
+    const svgEnd = `</svg>`;
+    let shapeElement;
+};
